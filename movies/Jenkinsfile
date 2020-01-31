@@ -80,9 +80,12 @@ pipeline {
                         openshift.selector("bc", "${APP_NAME}").startBuild("--from-file=${APP_NAME}/target/${APP_NAME}.jar", "--wait=true", "--follow=true")
                       }
                     }
-                }
-     		oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} 
-                oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
+                
+		}
+        	sh '''
+                      	oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT}
+                	oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
+		'''
             }          // TODO: Create a new OpenShift application based on the ${APP_NAME}:latest image stream
         }
 
