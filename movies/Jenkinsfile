@@ -87,7 +87,7 @@ pipeline {
                 	oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
 		'''
             }          // TODO: Create a new OpenShift application based on the ${APP_NAME}:latest image stream
-        }
+        
 
         stage('Wait for deployment in DEV env') {
             //TODO: Watch deployment until pod is in 'Running' state
